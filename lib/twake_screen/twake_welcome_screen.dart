@@ -12,7 +12,7 @@ class TwakeWelcomeScreen extends StatelessWidget {
   final TextStyle? descriptionPrivacyPolicyTextStyle;
   final String? signInTitle;
   final String? createTwakeIdTitle;
-  final String useCompanyServerTitle;
+  final String? useCompanyServerTitle;
   final String description;
   final String? privacyPolicy;
   final String? descriptionPrivacyPolicy;
@@ -38,7 +38,7 @@ class TwakeWelcomeScreen extends StatelessWidget {
     this.useCompanyServerTextStyle,
     this.signInTitle,
     this.createTwakeIdTitle,
-    required this.useCompanyServerTitle,
+    this.useCompanyServerTitle,
     required this.description,
     this.descriptionTextStyle,
     this.onSignInOnTap,
@@ -79,6 +79,40 @@ class TwakeWelcomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (logo != null) logo!,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Telepati",
+                      textAlign: TextAlign.center,
+                      style: descriptionTextStyle ??
+                          const TextStyle(
+                            fontSize: 34,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black,
+                          ),
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "Chat",
+                      textAlign: TextAlign.center,
+                      style: descriptionTextStyle ??
+                          const TextStyle(
+                            fontSize: 17,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
                 Text(
                   description,
                   textAlign: TextAlign.center,
@@ -89,6 +123,9 @@ class TwakeWelcomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         color: Colors.black,
                       ),
+                ),
+                SizedBox(
+                  height: 100,
                 ),
               ],
             ),
@@ -146,31 +183,32 @@ class TwakeWelcomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
-                    InkWell(
-                      focusColor: focusColor,
-                      hoverColor: hoverColor,
-                      highlightColor: highlightColor,
-                      overlayColor: overlayColor,
-                      splashColor: splashColor,
-                      onTap: onUseCompanyServerOnTap,
-                      child: Padding(
-                        padding: TwakeWelcomeScreenStyle
-                            .useCompanyServerTitlePadding,
-                        child: Text(
-                          useCompanyServerTitle,
-                          style: useCompanyServerTextStyle ??
-                              TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Inter',
-                                color: LinagoraSysColors.material().primary,
-                                decoration: TextDecoration.underline,
-                                decorationColor:
-                                    LinagoraSysColors.material().primary,
-                              ),
+                    if (useCompanyServerTitle != null)
+                      InkWell(
+                        focusColor: focusColor,
+                        hoverColor: hoverColor,
+                        highlightColor: highlightColor,
+                        overlayColor: overlayColor,
+                        splashColor: splashColor,
+                        onTap: onUseCompanyServerOnTap,
+                        child: Padding(
+                          padding: TwakeWelcomeScreenStyle
+                              .useCompanyServerTitlePadding,
+                          child: Text(
+                            useCompanyServerTitle!,
+                            style: useCompanyServerTextStyle ??
+                                TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Inter',
+                                  color: LinagoraSysColors.material().primary,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor:
+                                      LinagoraSysColors.material().primary,
+                                ),
+                          ),
                         ),
                       ),
-                    ),
                     if (privacyPolicy != null) ...[
                       const SizedBox(
                         height: 32,
