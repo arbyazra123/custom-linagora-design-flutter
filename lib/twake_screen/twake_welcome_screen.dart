@@ -5,18 +5,21 @@ import 'package:linagora_design_flutter/twake_screen/twake_welcome_screen_style.
 
 class TwakeWelcomeScreen extends StatelessWidget {
   final TextStyle? signInTextStyle;
+  final TextStyle? signUpTextStyle;
   final TextStyle? createTwakeIdTextStyle;
   final TextStyle? useCompanyServerTextStyle;
   final TextStyle? descriptionTextStyle;
   final TextStyle? privacyPolicyTextStyle;
   final TextStyle? descriptionPrivacyPolicyTextStyle;
   final String? signInTitle;
+  final String? signUpTitle;
   final String? createTwakeIdTitle;
   final String? useCompanyServerTitle;
   final String description;
   final String? privacyPolicy;
   final String? descriptionPrivacyPolicy;
   final VoidCallback? onSignInOnTap;
+  final VoidCallback? onSignUpOnTap;
   final VoidCallback? onCreateTwakeIdOnTap;
   final VoidCallback? onUseCompanyServerOnTap;
   final VoidCallback? onPrivacyPolicyOnTap;
@@ -58,7 +61,7 @@ class TwakeWelcomeScreen extends StatelessWidget {
     this.onPrivacyPolicyOnTap,
     this.privacyPolicyTextStyle,
     this.descriptionPrivacyPolicy,
-    this.descriptionPrivacyPolicyTextStyle,
+    this.descriptionPrivacyPolicyTextStyle, this.signUpTextStyle, this.signUpTitle, this.onSignUpOnTap,
   });
 
   @override
@@ -173,6 +176,27 @@ class TwakeWelcomeScreen extends StatelessWidget {
                         title: signInTitle!,
                         backgroundColor: LinagoraSysColors.material().surface,
                         textStyle: createTwakeIdTextStyle ??
+                            TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Inter',
+                              color: LinagoraSysColors.material().primary,
+                            ),
+                      ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    if (signUpTitle != null)
+                      HomeserverButtonWidget(
+                        focusColor: focusColor,
+                        hoverColor: hoverColor,
+                        highlightColor: highlightColor,
+                        overlayColor: overlayColor,
+                        splashColor: splashColor,
+                        onTap: onSignUpOnTap,
+                        title: signUpTitle!,
+                        backgroundColor: LinagoraSysColors.material().surface,
+                        textStyle: signUpTextStyle ??
                             TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
